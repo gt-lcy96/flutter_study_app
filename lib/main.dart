@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:study_app/bindings/initial_bindings.dart';
+import 'package:study_app/configs/themes/app_light_theme.dart';
 import 'package:study_app/firebase_options.dart';
 import 'package:study_app/pages/data_uploader/view.dart';
 import 'package:study_app/pages/introduction/view.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         child: GetMaterialApp(
+      theme: LightTheme().buildLightTheme(),
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
