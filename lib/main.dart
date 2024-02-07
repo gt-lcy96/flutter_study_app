@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:study_app/bindings/initial_bindings.dart';
 import 'package:study_app/configs/themes/app_dark_theme.dart';
 import 'package:study_app/configs/themes/app_light_theme.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 import 'package:study_app/firebase_options.dart';
 import 'package:study_app/pages/data_uploader/view.dart';
 import 'package:study_app/pages/introduction/view.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         child: GetMaterialApp(
-      theme: DarkTheme().buildDarkTheme(),
+      theme: Get.find<ThemeController>().darkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
