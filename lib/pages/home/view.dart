@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/question_paper_controller.dart';
+import 'package:study_app/pages/home/widgets/question_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,19 +14,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Obx(
         () => ListView.separated(
+          padding: UIParameters.mobileScreenPadding,
           itemBuilder: (BuildContext context, int index) {
             // print("_questionPaperController.allPapers[index].image_url!:  ${_questionPaperController.allPapers[index].image_url!}");
-            return ClipRect(
-              child: SizedBox(
-                height: 200.h,
-                width: 200.w,
-                child: FadeInImage(
-                  image: NetworkImage(
-                      _questionPaperController.allPapers[index].image_url!),
-                  placeholder: AssetImage("assets/images/app_splash_logo.png"),
-                ),
-              ),
-            );
+            return QuestionCard(model: _questionPaperController.allPapers[index]);
           },
           separatorBuilder: (BuildContext context, int index) => SizedBox(
             height: 20.h,
