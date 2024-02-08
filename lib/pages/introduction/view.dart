@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/app_circle_button.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +31,10 @@ class IntroductionPage extends StatelessWidget {
             ),
             SizedBox(height: 40.h),
             AppCircleButton(
-                onTap: () => null,
+                onTap: () {
+                  print("tap AppCircleButton");
+                  Get.toNamed(AppRoutes.HOME);
+                },
                 child: const Icon(Icons.arrow_forward, size: 35)),
           ]),
         ),
