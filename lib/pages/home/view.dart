@@ -13,13 +13,14 @@ class HomePage extends StatelessWidget {
       body: Obx(
         () => ListView.separated(
           itemBuilder: (BuildContext context, int index) {
+            // print("_questionPaperController.allPapers[index].image_url!:  ${_questionPaperController.allPapers[index].image_url!}");
             return ClipRect(
               child: SizedBox(
                 height: 200.h,
                 width: 200.w,
                 child: FadeInImage(
                   image: NetworkImage(
-                      _questionPaperController.allPaperImages[index]),
+                      _questionPaperController.allPapers[index].image_url!),
                   placeholder: AssetImage("assets/images/app_splash_logo.png"),
                 ),
               ),
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
           separatorBuilder: (BuildContext context, int index) => SizedBox(
             height: 20.h,
           ),
-          itemCount: _questionPaperController.allPaperImages.length,
+          itemCount: _questionPaperController.allPapers.length,
         ),
       ),
     );

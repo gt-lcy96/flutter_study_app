@@ -29,12 +29,14 @@ class QuestionPaperController extends GetxController {
       final paperList = data.docs
           .map((paper) => QuestionPaperModel.fromSnapshot(paper))
           .toList();
-      allPapers.assignAll(paperList);
-
+      // allPapers.assignAll(paperList);
+      // print("paperList:  ${paperList}");
       for (var paper in paperList) {
         final imgUrl = await Get.find<FirebaseStorageService>().getImage(paper.title);
         paper.image_url = imgUrl;
+        // print("paper.image_url:  ${paper.image_url}");
       }
+      // print("paperList[0].image_url!:  ${paperList[0].image_url!}");
 
       allPapers.assignAll(paperList);
     } catch (e) {
