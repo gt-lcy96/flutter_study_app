@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/models/question_paper_model.dart';
+import 'package:study_app/widgets/app_icon_text.dart';
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard({super.key, required this.model});
@@ -12,6 +13,10 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var iconColor = UIParameters.isDarkMode()
+        ? Colors.white
+        : Theme.of(context).primaryColor;
+
     const double _padding = 10.0;
     return Padding(
       padding: const EdgeInsets.all(_padding),
@@ -21,7 +26,7 @@ class QuestionCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: ColoredBox(
-                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                color: Theme.of(context).primaryColor.withOpacity(0.1),
                 child: SizedBox(
                   height: Get.width * 0.15,
                   width: Get.width * 0.15,
@@ -47,6 +52,23 @@ class QuestionCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 15),
                     child: Text(model.description!),
+                  ),
+                  Row(
+                    children: [
+                      AppIconText(
+                          icon:
+                              Icon(Icons.help_outline_sharp, color: iconColor),
+                          text: Text('${model.questionCount} questions',
+                              style: detailText.copyWith(color: iconColor))),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      AppIconText(
+                          icon:
+                              Icon(Icons.timer, color: iconColor),
+                          text: Text('${model.timeInMinits()}',
+                              style: detailText.copyWith(color: iconColor))),
+                    ],
                   ),
                 ],
               ),

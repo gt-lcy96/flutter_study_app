@@ -79,4 +79,6 @@ class QuestionPaperModel {
       questions: [],
     );
   }
+
+  String timeInMinits() => "${(time_seconds! / 60) . ceil()} mins";
 }
