@@ -41,6 +41,7 @@ dependencies:
   flutter_screenutil: ^5.3.1
   google_fonts: ^6.1.0
   path_provider: ^2.1.2
+  firebase_storage: ^11.6.5
 
 dev_dependencies:
   flutter_test:
