@@ -18,63 +18,91 @@ class QuestionCard extends StatelessWidget {
         : Theme.of(context).primaryColor;
 
     const double _padding = 10.0;
-    return Padding(
-      padding: const EdgeInsets.all(_padding),
-      child: Stack(
-        children: [
-          Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: ColoredBox(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
-                child: SizedBox(
-                  height: Get.width * 0.15,
-                  width: Get.width * 0.15,
-                  child: FadeInImage(
-                    image: NetworkImage(model.image_url!),
-                    placeholder:
-                        AssetImage("assets/images/app_splash_logo.png"),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: UIParameters.cardBorderRadius,
+          color: Theme.of(context).cardColor),
+      child: Padding(
+        padding: const EdgeInsets.all(_padding),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: ColoredBox(
+                  color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  child: SizedBox(
+                    height: Get.width * 0.15,
+                    width: Get.width * 0.15,
+                    child: FadeInImage(
+                      image: NetworkImage(model.image_url!),
+                      placeholder:
+                          AssetImage("assets/images/app_splash_logo.png"),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 12.w,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    model.title!,
-                    style: cartTitles(context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 15),
-                    child: Text(model.description!),
-                  ),
-                  Row(
-                    children: [
-                      AppIconText(
-                          icon:
-                              Icon(Icons.help_outline_sharp, color: iconColor),
-                          text: Text('${model.questionCount} questions',
-                              style: detailText.copyWith(color: iconColor))),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      AppIconText(
-                          icon:
-                              Icon(Icons.timer, color: iconColor),
-                          text: Text('${model.timeInMinits()}',
-                              style: detailText.copyWith(color: iconColor))),
-                    ],
-                  ),
-                ],
+              SizedBox(
+                width: 12.w,
               ),
-            ),
-          ]),
-        ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.title!,
+                      style: cartTitles(context),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 15),
+                      child: Text(
+                        model.description!,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        AppIconText(
+                            icon: Icon(Icons.help_outline_sharp,
+                                color: iconColor),
+                            text: Text('${model.questionCount} questions',
+                                style: detailText.copyWith(color: iconColor))),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        AppIconText(
+                            icon: Icon(Icons.timer, color: iconColor),
+                            text: Text('${model.timeInMinits()}',
+                                style: detailText.copyWith(color: iconColor))),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ]),
+            Positioned(
+                bottom: -_padding,
+                right: -_padding,
+                child: GestureDetector(
+                    child: Container(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
+                  child: Icon(
+                    Icons.wine_bar,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(cardBorderRadius),
+                        bottomRight: Radius.circular(cardBorderRadius),
+                      ),
+                      color: Theme.of(context).primaryColor),
+                )))
+          ],
+        ),
       ),
     );
   }
