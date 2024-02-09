@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/models/question_paper_model.dart';
@@ -92,7 +93,7 @@ class QuestionCard extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
                   child: Icon(
-                    Icons.wine_bar,
+                    AppIcons.trophyOutline,
                   ),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
