@@ -42,7 +42,7 @@ dependencies:
   google_fonts: ^6.1.0
   path_provider: ^2.1.2
   firebase_storage: ^11.6.5
-  flutter_zoom_drawer: ^3.1.2
+  flutter_zoom_drawer: ^2.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -26,8 +26,8 @@ class HomePage extends GetView<MyZoomDrawerController> {
             controller: _.zoomDrawerController,
             showShadow: true,
             angle: 0.0,
-            style: DrawerStyle.defaultStyle,
-            menuBackgroundColor: Colors.white.withOpacity(0.5),
+            style: DrawerStyle.DefaultStyle,
+            backgroundColor: Colors.white.withOpacity(0.5),
             slideWidth: Get.width * 0.6,
             menuScreen: MenuScreen(),
             mainScreen: Container(
