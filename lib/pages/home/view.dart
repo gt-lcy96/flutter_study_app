@@ -8,6 +8,7 @@ import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/question_paper_controller.dart';
 import 'package:study_app/controllers/zoom_drawer_controller.dart';
+import 'package:study_app/pages/home/widgets/menu_screen.dart';
 import 'package:study_app/pages/home/widgets/question_card.dart';
 import 'package:study_app/widgets/app_circle_button.dart';
 import 'package:study_app/widgets/content_area.dart';
@@ -23,10 +24,12 @@ class HomePage extends GetView<MyZoomDrawerController> {
         builder: (_) {
           return ZoomDrawer(
             controller: _.zoomDrawerController,
-            menuScreen: Text(
-              "Hi there",
-              style: TextStyle(color: Colors.red),
-            ),
+            showShadow: true,
+            angle: 0.0,
+            style: DrawerStyle.defaultStyle,
+            menuBackgroundColor: Colors.white.withOpacity(0.5),
+            slideWidth: Get.width * 0.6,
+            menuScreen: MenuScreen(),
             mainScreen: Container(
               decoration: BoxDecoration(gradient: mainGradient()),
               child: SafeArea(
