@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_app/controllers/question_paper_controller.dart';
+import 'package:study_app/controllers/zoom_drawer_controller.dart';
 
 import 'package:study_app/pages/data_uploader/index.dart';
 
@@ -30,6 +31,7 @@ class AppPages {
       page: () => const HomePage(),
       binding: BindingsBuilder(() {
         Get.put(QuestionPaperController());
+        Get.put(MyZoomDrawerController());
       })
     ),
   ];
