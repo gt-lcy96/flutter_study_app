@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/routes/routes.dart';
+import 'package:study_app/widgets/dialogs/dialogue_widget.dart';
 
 class AuthController extends GetxController {
+
   late FirebaseAuth _auth;
   final _user = Rxn<User>();
   late Stream<User?> _authStateChanges;
@@ -55,5 +57,19 @@ class AuthController extends GetxController {
 
   void navigateToIntroduction() {
     Get.offAllNamed(AppRoutes.INTRODUCTION);
+  }
+
+  void showLoginAlertDialogue() {
+    Get.dialog(Dialogs.questionStartDialogue(onTap: (){
+      Get.back();
+      // Navigate to Login Page
+    }),
+    // User cant tap outside of dialog to dismiss the dialog
+    barrierDismissible: false
+    );
+  }
+
+  bool isLoggedIn() {
+    return _auth.currentUser != null;
   }
 }
