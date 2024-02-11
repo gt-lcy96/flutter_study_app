@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/routes/routes.dart';
 
 class AuthController extends GetxController {
@@ -43,6 +44,15 @@ class AuthController extends GetxController {
       print("Exception in auth_controller: $e");
     }
   }
+
+  saveUser(GoogleSignInAccount account) {
+    userRF.doc(account.email).set({
+      'email': account.email,
+      "name": account.displayName,
+      "profilePic": account.photoUrl,
+    });
+  }
+
   void navigateToIntroduction() {
     Get.offAllNamed(AppRoutes.INTRODUCTION);
   }
