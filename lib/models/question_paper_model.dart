@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AnswerModel {
   String identifier;
   String answer;
@@ -42,6 +44,7 @@ class QuestionPaperModel {
   String? description;
   int? time_seconds;
   List<QuestionModel>? questions;
+  int questionCount;
 
   QuestionPaperModel({
     this.id,
@@ -50,6 +53,7 @@ class QuestionPaperModel {
     this.description,
     this.time_seconds,
     this.questions,
+    required this.questionCount,
   });
 
   factory QuestionPaperModel.fromJson(Map<String, dynamic> json) {
@@ -59,7 +63,22 @@ class QuestionPaperModel {
       image_url: json["image_url"] as String,
       description: json["Description"] as String,
       time_seconds: json["time_seconds"] as int,
+      questionCount: 0,
       questions: (json["questions"] as List).map((dynamic e) => QuestionModel.fromJson(e as Map<String, dynamic>)).toList(),
     );
   }
+
+  factory QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json) {
+    return QuestionPaperModel(
+      id: json.id,
+      title: json["title"],
+      image_url: json["image_url"],
+      description: json["description"],
+      time_seconds: json["time_seconds"],
+      questionCount: json['questions_count'] as int,
+      questions: [],
+    );
+  }
+
+  String timeInMinits() => "${(time_seconds! / 60) . ceil()} mins";
 }

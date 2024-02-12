@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:study_app/controllers/question_paper_controller.dart';
+import 'package:study_app/controllers/zoom_drawer_controller.dart';
 
 import 'package:study_app/pages/data_uploader/index.dart';
 
 import 'package:get/get.dart';
+import 'package:study_app/pages/home/view.dart';
+import 'package:study_app/pages/introduction/view.dart';
+import 'package:study_app/pages/login/view.dart';
+import 'package:study_app/pages/splash_screen/index.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -13,8 +19,25 @@ class AppPages {
   static final List<GetPage> routes = [
     GetPage(
       name: AppRoutes.INITIAL,
-      page: () => const DataUploaderScreen(),
-      binding: DataUploaderBinding(),
+      page: () => const SplashScreenPage(),
+      binding: SplashScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.INTRODUCTION,
+      page: () => const IntroductionPage(),
+    ),
+    GetPage(
+      // name: AppRoutes.HOME,
+      name: AppRoutes.HOME,
+      page: () => const HomePage(),
+      binding: BindingsBuilder(() {
+        Get.put(QuestionPaperController());
+        Get.put(MyZoomDrawerController());
+      })
+    ),
+    GetPage(
+      name: AppRoutes.SIGN_IN,
+      page: () => const LoginPage(),
     ),
   ];
 }
