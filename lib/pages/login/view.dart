@@ -2,10 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
+import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/widgets/common/main_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<AuthController> {
   const LoginPage({super.key});
 
   @override
@@ -35,7 +37,9 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           MainButton(
-            onTap: () {},
+            onTap: () {
+              controller.signInWithGoogle();
+            },
             child: Stack(children: [
               Positioned(
                 top: 0,
