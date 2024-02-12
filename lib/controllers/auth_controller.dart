@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_app/firebase_ref/references.dart';
+import 'package:study_app/pages/login/view.dart';
 import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/dialogs/dialogue_widget.dart';
 
@@ -62,7 +64,7 @@ class AuthController extends GetxController {
   void showLoginAlertDialogue() {
     Get.dialog(Dialogs.questionStartDialogue(onTap: (){
       Get.back();
-      // Navigate to Login Page
+      navigateToLoginPage();
     }),
     // User cant tap outside of dialog to dismiss the dialog
     barrierDismissible: false
@@ -71,5 +73,9 @@ class AuthController extends GetxController {
 
   bool isLoggedIn() {
     return _auth.currentUser != null;
+  }
+  
+  void navigateToLoginPage() {
+    Get.toNamed(AppRoutes.SIGN_IN);
   }
 }
