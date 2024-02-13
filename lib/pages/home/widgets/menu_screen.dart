@@ -22,14 +22,29 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
               child: Stack(
             children: [
               Positioned(
-                top: 0,
-                right: 0,
+                  top: 0,
+                  right: 0,
                   child: BackButton(
-                color: Colors.white,
-                onPressed: () {
-                  controller.toggleDrawer();
-                },
-              ))
+                    color: Colors.white,
+                    onPressed: () {
+                      controller.toggleDrawer();
+                    },
+                  )),
+              Padding(
+                padding: EdgeInsets.only(right: Get.width * 0.3),
+                child: Column(
+                  children: [
+                    Obx(() => controller.user.value == null
+                        ? const SizedBox()
+                        : Text(controller.user.value!.displayName ?? '',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 18.sp,
+                              color: onSurfaceTextColor,
+                            ))),
+                  ],
+                ),
+              )
             ],
           )),
         ));

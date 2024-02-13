@@ -49,6 +49,11 @@ class AuthController extends GetxController {
     }
   }
 
+  User? getUser() {
+    _user.value = _auth.currentUser;
+    return _user.value;
+  }
+
   saveUser(GoogleSignInAccount account) {
     userRF.doc(account.email).set({
       'email': account.email,
