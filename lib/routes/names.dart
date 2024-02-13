@@ -4,4 +4,5 @@ class AppRoutes {
   // static const HOME = '/home';
   static const SIGN_IN = '/sign_in';
  static const HOME = '/home';
+  static const QUESTION = '/question';
 }

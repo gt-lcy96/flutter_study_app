@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:study_app/pages/home/view.dart';
 import 'package:study_app/pages/introduction/view.dart';
 import 'package:study_app/pages/login/view.dart';
+import 'package:study_app/pages/question/view.dart';
 import 'package:study_app/pages/splash_screen/index.dart';
 import 'routes.dart';
 
@@ -38,6 +39,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => const LoginPage(),
+    ),
+    GetPage(
+      name: AppRoutes.QUESTION,
+      page: () => const QuestionPage(),
     ),
   ];
 }
