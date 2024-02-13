@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/services/firebase_storage_service.dart';
 
 class QuestionPaperController extends GetxController {
@@ -46,7 +47,7 @@ class QuestionPaperController extends GetxController {
         // Get.offNamed();
       } else {
         print("question_paper_controller.navigateToQuestion - Logged in");
-        // Get.toNamed();
+        Get.toNamed(AppRoutes.QUESTION, arguments: paper);
       }
     } else {
       print("paper.title:  ${paper.title}");

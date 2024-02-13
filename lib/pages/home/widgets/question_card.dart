@@ -26,7 +26,7 @@ class QuestionCard extends GetView<QuestionPaperController> {
           color: Theme.of(context).cardColor),
       child: InkWell(
         onTap: () {
-          controller.navigateToQuestions(paper: model);
+          controller.navigateToQuestions(paper: model, tryAgain: false);
           // print('${model.title}');
           print("model.title:  ${model.title}");
         },
