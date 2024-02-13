@@ -39,7 +39,7 @@ class MyZoomDrawerController extends GetxController {
       scheme: 'mailto',
       path: 'lohcy96@gmail.com'
     );
-    _launch(emailLaunchUri.toString());
+    // _launch(emailLaunchUri.toString());
   }
 
   Future<void> _launch(String url) async {
