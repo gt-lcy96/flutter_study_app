@@ -19,7 +19,7 @@ class MyZoomDrawerController extends GetxController {
   }
 
   void signOut() {
-
+    Get.find<AuthController>().signOut();
   }
 
   void signIn() {
@@ -27,7 +27,11 @@ class MyZoomDrawerController extends GetxController {
   }
 
   void website() {
+    _launch("https://github.com/gt-lcy96");
+  }
 
+  void facebook() {
+    _launch("https://facebook.com");
   }
 
   void email() {
