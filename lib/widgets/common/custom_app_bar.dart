@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
@@ -37,23 +38,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               : Center(child: titleWidget),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          leading ??
-              Transform.translate(
-                offset: const Offset(-14, 0),
-                child: const BackButton(),
-              ),
-          if (showActionIcon)
-            Transform.translate(
-              offset: const Offset(10, 0),
-              child: AppCircleButton(
-                child: const Icon(AppIcons.menuLeft),
-                onTap: onMenuActionTap ?? null,
-              ),
-            ),
-        ]),
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              leading ??
+                  Transform.translate(
+                    offset: const Offset(-14, 0),
+                    child: const BackButton(),
+                  ),
+              if (showActionIcon)
+                Transform.translate(
+                  offset: const Offset(10, 0),
+                  child: AppCircleButton(
+                    child: Icon(
+                      Icons.menu,
+                      size: 22.sp,
+                    ),
+                    onTap: onMenuActionTap ?? null,
+                  ),
+                ),
+            ]),
       ]),
     ));
   }
