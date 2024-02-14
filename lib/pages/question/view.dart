@@ -103,6 +103,7 @@ class QuestionPage extends GetView<QuestionController> {
                           ),
                           Expanded(
                             child: Visibility(
+                              visible: controller.loadingStatus.value == LoadingStatus.completed,
                               child: MainButton(
                                 onTap: () {
                                   controller.nextQuestion();
