@@ -84,17 +84,22 @@ class QuestionPage extends GetView<QuestionController> {
                         child: Row(children: [
                           Visibility(
                             visible: controller.isNotFirstQuestion,
-                            child: SizedBox(
-                                width: 55.w,
-                                height: 55.h,
-                                child: MainButton(
-                                    onTap: () {},
-                                    child: Icon(
-                                      Icons.arrow_back_ios_new,
-                                      color: Get.isDarkMode
-                                          ? onSurfaceTextColor
-                                          : Theme.of(context).primaryColor,
-                                    ))),
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 5.w),
+                              child: SizedBox(
+                                  width: 55.w,
+                                  height: 55.h,
+                                  child: MainButton(
+                                      onTap: () {
+                                        controller.prevQuestion();
+                                      },
+                                      child: Icon(
+                                        Icons.arrow_back_ios_new,
+                                        color: Get.isDarkMode
+                                            ? onSurfaceTextColor
+                                            : Theme.of(context).primaryColor,
+                                      ))),
+                            ),
                           ),
                           Expanded(
                             child: Visibility(

@@ -73,12 +73,22 @@ class QuestionController extends GetxController {
   }
 
   void nextQuestion() {
-    // dont have question any more
+    // dont have next question any more
     if(questionIndex.value >= allQuestion.length -1) {
       return;
     }
 
     questionIndex.value++;
+    currentQuestion.value = allQuestion[questionIndex.value];
+  }
+
+  void prevQuestion() {
+    // dont have previous question any more
+    if(questionIndex.value <= 0) {
+      return;
+    }
+
+    questionIndex.value--;
     currentQuestion.value = allQuestion[questionIndex.value];
   }
 }
