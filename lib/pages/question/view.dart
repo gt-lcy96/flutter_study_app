@@ -12,6 +12,7 @@ import 'package:study_app/widgets/common/main_button.dart';
 import 'package:study_app/widgets/common/question_place_holder.dart';
 import 'package:study_app/widgets/content_area.dart';
 import 'package:study_app/widgets/questions/answer_card.dart';
+import 'package:study_app/widgets/questions/countdown_timer.dart';
 
 class QuestionPage extends GetView<QuestionController> {
   const QuestionPage({super.key});
@@ -29,7 +30,8 @@ class QuestionPage extends GetView<QuestionController> {
               ),
             ),
             child: Obx(
-              () => Text("${controller.time.value}"),
+              () => CountDownTimer(
+                  time: controller.time.value, color: onSurfaceTextColor),
             ),
           ),
           showActionIcon: true,
