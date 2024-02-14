@@ -66,6 +66,6 @@ class QuestionController extends GetxController {
 
   void selectedAnswer(String? answer) {
     currentQuestion.value!.selectedAnswer = answer;
-    update();
+    update(['answers_list']);
   }
 }

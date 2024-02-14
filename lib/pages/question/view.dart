@@ -35,6 +35,7 @@ class QuestionPage extends GetView<QuestionController> {
                                   style: questionText,
                                 ),
                                 GetBuilder<QuestionController>(
+                                    id: 'answers_list',
                                     builder: (context) {
                                   return ListView.separated(
                                     shrinkWrap: true,
