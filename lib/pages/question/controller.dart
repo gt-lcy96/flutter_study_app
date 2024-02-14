@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
 
 class QuestionController extends GetxController {
+  final loadingStatus = LoadingStatus.loading.obs;
   late QuestionPaperModel questionPaperModel;
   final allQuestion = <QuestionModel>[];
 
@@ -18,6 +20,7 @@ class QuestionController extends GetxController {
   }
 
   Future<void> loadData(QuestionPaperModel questionPaper) async {
+    loadingStatus.value = LoadingStatus.loading;
     questionPaperModel = questionPaper;
     try {
       final QuerySnapshot<Map<String, dynamic>> questionQuery =
@@ -45,6 +48,9 @@ class QuestionController extends GetxController {
 
       if(questionPaperModel.questions != null && questionPaperModel.questions!.isNotEmpty) {
           allQuestion.assignAll(questionPaperModel.questions!);
+          loadingStatus.value = LoadingStatus.completed;
+        } else {
+          loadingStatus.value = LoadingStatus.error;
         }
     } catch (e) {
       if (kDebugMode) {
