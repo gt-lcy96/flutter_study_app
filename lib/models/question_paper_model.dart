@@ -27,6 +27,7 @@ class QuestionModel {
   String question;
   List<AnswerModel> answers;
   String? correctAnswer;
+  String? selectedAnswer;
 
   QuestionModel({
     required this.id,
