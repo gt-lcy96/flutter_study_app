@@ -9,6 +9,7 @@ class QuestionController extends GetxController {
   final loadingStatus = LoadingStatus.loading.obs;
   late QuestionPaperModel questionPaperModel;
   final allQuestion = <QuestionModel>[];
+  Rxn<QuestionModel> currentQuestion = Rxn<QuestionModel>();
 
   @override
   void onReady() {
@@ -21,6 +22,7 @@ class QuestionController extends GetxController {
 
   Future<void> loadData(QuestionPaperModel questionPaper) async {
     loadingStatus.value = LoadingStatus.loading;
+    update();
     questionPaperModel = questionPaper;
     try {
       final QuerySnapshot<Map<String, dynamic>> questionQuery =
@@ -48,9 +50,12 @@ class QuestionController extends GetxController {
 
       if(questionPaperModel.questions != null && questionPaperModel.questions!.isNotEmpty) {
           allQuestion.assignAll(questionPaperModel.questions!);
+          currentQuestion.value = questionPaperModel.questions![0];
           loadingStatus.value = LoadingStatus.completed;
+          update();
         } else {
           loadingStatus.value = LoadingStatus.error;
+          update();
         }
     } catch (e) {
       if (kDebugMode) {
