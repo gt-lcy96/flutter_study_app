@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -14,7 +16,7 @@ class QuestionController extends GetxController {
   bool get isLastQuestion => questionIndex.value >= allQuestion.length - 1;
 
   Rxn<QuestionModel> currentQuestion = Rxn<QuestionModel>();
-
+  
   @override
   void onReady() {
     // TODO: implement onReady

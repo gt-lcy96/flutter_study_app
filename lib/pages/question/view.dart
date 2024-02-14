@@ -7,6 +7,7 @@ import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/pages/question/controller.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
+import 'package:study_app/widgets/common/custom_app_bar.dart';
 import 'package:study_app/widgets/common/main_button.dart';
 import 'package:study_app/widgets/common/question_place_holder.dart';
 import 'package:study_app/widgets/content_area.dart';
@@ -18,6 +19,23 @@ class QuestionPage extends GetView<QuestionController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppBar(
+          leading: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            decoration: const ShapeDecoration(
+              shape: StadiumBorder(
+                side: BorderSide(color: onSurfaceTextColor, width: 2),
+              ),
+            ),
+            child: Text("Timer"),
+          ),
+          showActionIcon: true,
+          titleWidget: Obx(
+            () => Text(
+                "Q. ${(controller.questionIndex.value + 1).toString().padLeft(2, '0')}",
+                style: appBarTS),
+          )),
       body: BackgroundDecoration(
         child: Obx(() => Container(
               // height: Get.height,
@@ -107,8 +125,9 @@ class QuestionPage extends GetView<QuestionController> {
                                   LoadingStatus.completed,
                               child: MainButton(
                                 onTap: () {
-                                  controller.isLastQuestion ? Container() :
-                                  controller.nextQuestion();
+                                  controller.isLastQuestion
+                                      ? Container()
+                                      : controller.nextQuestion();
                                 },
                                 title: controller.isLastQuestion
                                     ? 'Complete'
