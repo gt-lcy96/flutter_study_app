@@ -11,8 +11,9 @@ class QuestionController extends GetxController {
   final allQuestion = <QuestionModel>[];
   final questionIndex = 0.obs;
   bool get isNotFirstQuestion => questionIndex.value > 0;
-  Rxn<QuestionModel> currentQuestion = Rxn<QuestionModel>();
+  bool get isLastQuestion => questionIndex.value >= allQuestion.length - 1;
 
+  Rxn<QuestionModel> currentQuestion = Rxn<QuestionModel>();
 
   @override
   void onReady() {
@@ -51,15 +52,16 @@ class QuestionController extends GetxController {
         _question.answers = answers;
       }
 
-      if(questionPaperModel.questions != null && questionPaperModel.questions!.isNotEmpty) {
-          allQuestion.assignAll(questionPaperModel.questions!);
-          currentQuestion.value = questionPaperModel.questions![0];
-          loadingStatus.value = LoadingStatus.completed;
-          update();
-        } else {
-          loadingStatus.value = LoadingStatus.error;
-          update();
-        }
+      if (questionPaperModel.questions != null &&
+          questionPaperModel.questions!.isNotEmpty) {
+        allQuestion.assignAll(questionPaperModel.questions!);
+        currentQuestion.value = questionPaperModel.questions![0];
+        loadingStatus.value = LoadingStatus.completed;
+        update();
+      } else {
+        loadingStatus.value = LoadingStatus.error;
+        update();
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -74,7 +76,7 @@ class QuestionController extends GetxController {
 
   void nextQuestion() {
     // dont have next question any more
-    if(questionIndex.value >= allQuestion.length -1) {
+    if (questionIndex.value >= allQuestion.length - 1) {
       return;
     }
 
@@ -84,7 +86,7 @@ class QuestionController extends GetxController {
 
   void prevQuestion() {
     // dont have previous question any more
-    if(questionIndex.value <= 0) {
+    if (questionIndex.value <= 0) {
       return;
     }
 
