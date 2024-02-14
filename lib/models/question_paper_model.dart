@@ -12,6 +12,14 @@ class AnswerModel {
       answer: json["Answer"],
     );
   }
+
+  factory AnswerModel.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
+    return AnswerModel(
+      identifier: snapshot["identifier"] as String,
+      answer: snapshot["answer"] as String,
+    );
+  }
 }
 
 class QuestionModel {
