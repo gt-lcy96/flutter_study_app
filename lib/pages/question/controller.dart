@@ -41,10 +41,11 @@ class QuestionController extends GetxController {
             .map((answer) => AnswerModel.fromSnapshot(answer))
             .toList();
         _question.answers = answers;
-        if(questionPaperModel.questions != null && questionPaperModel.questions!.isNotEmpty) {
+      }
+
+      if(questionPaperModel.questions != null && questionPaperModel.questions!.isNotEmpty) {
           allQuestion.assignAll(questionPaperModel.questions!);
         }
-      }
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
