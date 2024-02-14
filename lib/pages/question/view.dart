@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/pages/question/controller.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
+import 'package:study_app/widgets/common/question_place_holder.dart';
 
 class QuestionPage extends GetView<QuestionController> {
   const QuestionPage({super.key});
@@ -27,7 +28,7 @@ class QuestionPage extends GetView<QuestionController> {
                             ],
                           ),
                         ))
-                      : CircularProgressIndicator(),
+                      : Expanded(child: QuestionScreenHolder()),
                 ],
               ),
             )),
