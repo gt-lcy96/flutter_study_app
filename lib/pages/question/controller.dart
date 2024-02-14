@@ -16,7 +16,11 @@ class QuestionController extends GetxController {
   bool get isLastQuestion => questionIndex.value >= allQuestion.length - 1;
 
   Rxn<QuestionModel> currentQuestion = Rxn<QuestionModel>();
-  
+
+  Timer? _timer;
+  int remainSeconds = 1;
+  final time = '00.00'.obs;
+
   @override
   void onReady() {
     // TODO: implement onReady
@@ -58,6 +62,7 @@ class QuestionController extends GetxController {
           questionPaperModel.questions!.isNotEmpty) {
         allQuestion.assignAll(questionPaperModel.questions!);
         currentQuestion.value = questionPaperModel.questions![0];
+        _startTimer(questionPaper.time_seconds!);
         loadingStatus.value = LoadingStatus.completed;
         update();
       } else {
@@ -94,5 +99,22 @@ class QuestionController extends GetxController {
 
     questionIndex.value--;
     currentQuestion.value = allQuestion[questionIndex.value];
+  }
+
+  void _startTimer(int seconds) {
+    const duration = Duration(seconds: 1);
+    remainSeconds = seconds;
+    Timer.periodic(duration, (Timer timer) {
+      if (remainSeconds == 0) {
+        timer.cancel();
+      } else {
+        int minutes = remainSeconds ~/ 60;
+        int seconds = remainSeconds % 60;
+        time.value = minutes.toString().padLeft(2, "0") +
+            ":" +
+            seconds.toString().padLeft(2, "0");
+        remainSeconds--;
+      }
+    });
   }
 }

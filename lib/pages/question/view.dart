@@ -28,7 +28,9 @@ class QuestionPage extends GetView<QuestionController> {
                 side: BorderSide(color: onSurfaceTextColor, width: 2),
               ),
             ),
-            child: Text("Timer"),
+            child: Obx(
+              () => Text("${controller.time.value}"),
+            ),
           ),
           showActionIcon: true,
           titleWidget: Obx(
