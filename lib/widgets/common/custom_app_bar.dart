@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/app_circle_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -54,7 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Icons.menu,
                       size: 22.sp,
                     ),
-                    onTap: onMenuActionTap ?? null,
+                    onTap: onMenuActionTap ?? () => Get.toNamed(AppRoutes.TEST_OVERVIEW),
                   ),
                 ),
             ]),

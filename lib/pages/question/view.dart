@@ -6,6 +6,7 @@ import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/pages/question/controller.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
 import 'package:study_app/widgets/common/custom_app_bar.dart';
 import 'package:study_app/widgets/common/main_button.dart';
@@ -130,7 +131,7 @@ class QuestionPage extends GetView<QuestionController> {
                               child: MainButton(
                                 onTap: () {
                                   controller.isLastQuestion
-                                      ? Container()
+                                      ? Get.toNamed(AppRoutes.TEST_OVERVIEW)
                                       : controller.nextQuestion();
                                 },
                                 title: controller.isLastQuestion

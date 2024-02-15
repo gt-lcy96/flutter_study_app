@@ -4,7 +4,7 @@ import 'package:study_app/pages/question/controller.dart';
 class QuestionBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put(QuestionController());
+    Get.put<QuestionController>(QuestionController());
   }
 
 }
