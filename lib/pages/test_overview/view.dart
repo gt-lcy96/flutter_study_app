@@ -7,6 +7,7 @@ import 'package:study_app/pages/home/widgets/question_card.dart';
 import 'package:study_app/pages/question/index.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
 import 'package:study_app/widgets/common/custom_app_bar.dart';
+import 'package:study_app/widgets/common/main_button.dart';
 import 'package:study_app/widgets/content_area.dart';
 import 'package:study_app/widgets/questions/answer_card.dart';
 import 'package:study_app/widgets/questions/countdown_timer.dart';
@@ -71,6 +72,15 @@ class TestOverviewPage extends GetView<QuestionController> {
                 ],
               )),
             ),
+            ColoredBox(color: Theme.of(context).scaffoldBackgroundColor, child: Padding(
+              padding: UIParameters.mobileScreenPadding,
+              child: MainButton(
+                onTap: (){
+                  controller.complete();
+                },
+                title: 'Complete',
+              ),
+            )),
           ]),
         ));
   }
