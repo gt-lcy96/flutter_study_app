@@ -6,4 +6,5 @@ class AppRoutes {
  static const HOME = '/home';
   static const QUESTION = '/question';
   static const TEST_OVERVIEW = '/test_overview';
+  static const RESULT = '/result';
 }

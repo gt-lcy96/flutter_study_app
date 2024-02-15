@@ -9,6 +9,7 @@ import 'package:study_app/pages/home/view.dart';
 import 'package:study_app/pages/introduction/view.dart';
 import 'package:study_app/pages/login/view.dart';
 import 'package:study_app/pages/question/view.dart';
+import 'package:study_app/pages/result/view.dart';
 import 'package:study_app/pages/splash_screen/index.dart';
 import 'package:study_app/pages/question/index.dart';
 import 'package:study_app/pages/test_overview/view.dart';
@@ -50,6 +51,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.TEST_OVERVIEW,
       page: () => const TestOverviewPage(),
+    ),
+    GetPage(
+      name: AppRoutes.RESULT,
+      page: () => const ResultPage(),
     ),
   ];
 }
