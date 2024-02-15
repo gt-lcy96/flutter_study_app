@@ -8,7 +8,9 @@ import 'package:study_app/pages/question/index.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
 import 'package:study_app/widgets/common/custom_app_bar.dart';
 import 'package:study_app/widgets/content_area.dart';
+import 'package:study_app/widgets/questions/answer_card.dart';
 import 'package:study_app/widgets/questions/countdown_timer.dart';
+import 'package:study_app/widgets/questions/question_number_card.dart';
 
 class TestOverviewPage extends GetView<QuestionController> {
   const TestOverviewPage({super.key});
@@ -43,17 +45,28 @@ class TestOverviewPage extends GetView<QuestionController> {
                   SizedBox(height: 20.h),
                   Expanded(
                     child: GridView.builder(
-                      itemCount: controller.allQuestion.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: Get.width ~/ 75,
-                        childAspectRatio: 1,
-                        crossAxisSpacing: 8,
-                        mainAxisExtent: 8,
-                      ),
-                      itemBuilder: (_, index) {
-                        return Text('${controller.allQuestion[index].selectedAnswer != null}');
-                      }
-                    ),
+                        itemCount: controller.allQuestion.length,
+                        shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: Get.width ~/ 75,
+                          childAspectRatio: 1,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                        ),
+                        itemBuilder: (_, index) {
+                          AnswerStatus? _answerStatus;
+                          if (controller.allQuestion[index].selectedAnswer !=
+                              null) {
+                            _answerStatus = AnswerStatus.answered;
+                          }
+
+                          return QuestionNumberCard(
+                            index: index + 1,
+                            status: _answerStatus,
+                            onTap: ()=> controller.jumpToQuestion(index),
+                          );
+                        }),
                   ),
                 ],
               )),
