@@ -11,6 +11,7 @@ import 'package:study_app/pages/login/view.dart';
 import 'package:study_app/pages/question/view.dart';
 import 'package:study_app/pages/splash_screen/index.dart';
 import 'package:study_app/pages/question/index.dart';
+import 'package:study_app/pages/test_overview/view.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -45,6 +46,10 @@ class AppPages {
       name: AppRoutes.QUESTION,
       page: () => const QuestionPage(),
       binding: QuestionBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.TEST_OVERVIEW,
+      page: () => const TestOverviewPage(),
     ),
   ];
 }
