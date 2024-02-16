@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:study_app/controllers/auth_controller.dart';
+import 'package:study_app/controllers/question_paper_controller.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
@@ -79,7 +81,7 @@ class QuestionController extends GetxController {
 
   void selectedAnswer(String? answer) {
     currentQuestion.value!.selectedAnswer = answer;
-    update(['answers_list']);
+    update(['answers_list', 'answer_review_list']);
   }
 
   String get completeTest {
@@ -91,10 +93,10 @@ class QuestionController extends GetxController {
     return "$answered out of ${allQuestion.length} answered";
   }
 
-  void jumpToQuestion(int index, {bool isGoBack=true}) {
+  void jumpToQuestion(int index, {bool isGoBack = true}) {
     questionIndex.value = index;
     currentQuestion.value = allQuestion[index];
-    if(isGoBack) {
+    if (isGoBack) {
       Get.back();
     }
   }
@@ -122,7 +124,7 @@ class QuestionController extends GetxController {
   void _startTimer(int seconds) {
     const duration = Duration(seconds: 1);
     remainSeconds = seconds;
-    _timer =  Timer.periodic(duration, (Timer timer) {
+    _timer = Timer.periodic(duration, (Timer timer) {
       if (remainSeconds == 0) {
         timer.cancel();
       } else {
@@ -139,5 +141,19 @@ class QuestionController extends GetxController {
   void complete() {
     _timer!.cancel();
     Get.offAndToNamed(AppRoutes.RESULT);
+  }
+
+  void tryAgain() {
+    // reset question to question 1
+    questionIndex.value = 0;
+    currentQuestion.value = allQuestion[0];
+
+    Get.find<QuestionPaperController>()
+        .navigateToQuestions(paper: questionPaperModel, tryAgain: true);
+  }
+
+  void navigateToHome() {
+    _timer!.cancel();
+    Get.offNamedUntil(AppRoutes.HOME, (route) => false);
   }
 }

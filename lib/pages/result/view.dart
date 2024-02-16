@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
+import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/questions_controller_extension.dart';
 import 'package:study_app/pages/question/index.dart';
 import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
 import 'package:study_app/widgets/common/custom_app_bar.dart';
+import 'package:study_app/widgets/common/main_button.dart';
 import 'package:study_app/widgets/content_area.dart';
 import 'package:study_app/widgets/questions/answer_card.dart';
 import 'package:study_app/widgets/questions/question_number_card.dart';
@@ -90,7 +92,30 @@ class ResultPage extends GetView<QuestionController> {
                   )
                 ],
               ),
-            ))
+            )),
+            ColoredBox(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: Padding(
+                  padding: UIParameters.mobileScreenPadding,
+                  child: Row(children: [
+                    Expanded(
+                      child: MainButton(
+                          onTap: () {
+                            controller.tryAgain();
+                          },
+                          color: Colors.blueGrey,
+                          title: 'Try Again'),
+                    ),
+                    SizedBox(width: 5.w),
+                    Expanded(
+                      child: MainButton(
+                          onTap: () {
+                            controller.saveTestResults();
+                          },
+                          title: 'Go Home'),
+                    ),
+                  ])),
+            ),
           ],
         ),
       ),
