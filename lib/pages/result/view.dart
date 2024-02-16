@@ -21,13 +21,14 @@ class ResultPage extends GetView<QuestionController> {
         Get.isDarkMode ? Colors.white : Theme.of(context).primaryColor;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppBar(
+        leading: SizedBox(height: 80.h),
+        title: controller.correctAnsweredQuestions,
+      ),
       body: BackgroundDecoration(
         child: Column(
           children: [
-            CustomAppBar(
-              leading: SizedBox(height: 80.h),
-              title: controller.correctAnsweredQuestions,
-            ),
             Expanded(
                 child: ContentArea(
               child: Column(
