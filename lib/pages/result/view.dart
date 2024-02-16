@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/controllers/questions_controller_extension.dart';
 import 'package:study_app/pages/question/index.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/widgets/common/background_decoration.dart';
 import 'package:study_app/widgets/common/custom_app_bar.dart';
 import 'package:study_app/widgets/content_area.dart';
@@ -80,10 +81,8 @@ class ResultPage extends GetView<QuestionController> {
                             index: index + 1,
                             status: _status,
                             onTap: () {
-                              controller.jumpToQuestion(
-                                index,
-                                isGoBack: false,
-                              );
+                              controller.jumpToQuestion(index, isGoBack: false);
+                              Get.toNamed(AppRoutes.ANSWER_CHECK);
                             },
                           );
                         }),
