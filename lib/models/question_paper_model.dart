@@ -12,6 +12,14 @@ class AnswerModel {
       answer: json["Answer"],
     );
   }
+
+  factory AnswerModel.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
+    return AnswerModel(
+      identifier: snapshot["identifier"] as String,
+      answer: snapshot["answer"] as String,
+    );
+  }
 }
 
 class QuestionModel {
@@ -19,6 +27,7 @@ class QuestionModel {
   String question;
   List<AnswerModel> answers;
   String? correctAnswer;
+  String? selectedAnswer;
 
   QuestionModel({
     required this.id,
@@ -31,8 +40,20 @@ class QuestionModel {
     return QuestionModel(
       id: json["id"] as String,
       question: json["question"] as String,
-      answers: (json["answers"] as List).map((e) => AnswerModel.fromJson(e)).toList(),
+      answers: (json["answers"] as List)
+          .map((e) => AnswerModel.fromJson(e))
+          .toList(),
       correctAnswer: json["correct_answer"] as String,
+    );
+  }
+
+  factory QuestionModel.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
+    return QuestionModel(
+      id: snapshot.id,
+      question: snapshot["question"],
+      answers: [],
+      correctAnswer: snapshot["correct_answer"],
     );
   }
 }
@@ -64,11 +85,14 @@ class QuestionPaperModel {
       description: json["Description"] as String,
       time_seconds: json["time_seconds"] as int,
       questionCount: 0,
-      questions: (json["questions"] as List).map((dynamic e) => QuestionModel.fromJson(e as Map<String, dynamic>)).toList(),
+      questions: (json["questions"] as List)
+          .map((dynamic e) => QuestionModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
-  factory QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json) {
+  factory QuestionPaperModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> json) {
     return QuestionPaperModel(
       id: json.id,
       title: json["title"],
@@ -80,5 +104,5 @@ class QuestionPaperModel {
     );
   }
 
-  String timeInMinits() => "${(time_seconds! / 60) . ceil()} mins";
+  String timeInMinits() => "${(time_seconds! / 60).ceil()} mins";
 }

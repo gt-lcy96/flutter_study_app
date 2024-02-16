@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
+import 'package:study_app/routes/routes.dart';
 import 'package:study_app/services/firebase_storage_service.dart';
 
 class QuestionPaperController extends GetxController {
@@ -26,7 +28,8 @@ class QuestionPaperController extends GetxController {
       // allPapers.assignAll(paperList);
       // print("paperList:  ${paperList}");
       for (var paper in paperList) {
-        final imgUrl = await Get.find<FirebaseStorageService>().getImage(paper.title);
+        final imgUrl =
+            await Get.find<FirebaseStorageService>().getImage(paper.title);
         paper.image_url = imgUrl;
         // print("paper.image_url:  ${paper.image_url}");
       }
@@ -38,15 +41,19 @@ class QuestionPaperController extends GetxController {
     }
   }
 
-  void navigateToQuestions({required QuestionPaperModel paper, bool tryAgain=false}){
+  void navigateToQuestions(
+      {required QuestionPaperModel paper, bool tryAgain = false}) {
     AuthController _authController = Get.find();
-    if(_authController.isLoggedIn()) {
-      if(tryAgain) {
+    if (_authController.isLoggedIn()) {
+      if (tryAgain) {
         Get.back();
-        // Get.offNamed();
+        Get.toNamed(AppRoutes.QUESTION,
+            arguments: paper, preventDuplicates: false);
       } else {
-        print("question_paper_controller.navigateToQuestion - Logged in");
-        // Get.toNamed();
+        if (kDebugMode) {
+          print("question_paper_controller.navigateToQuestion - Logged in");
+        }
+        Get.toNamed(AppRoutes.QUESTION, arguments: paper);
       }
     } else {
       print("paper.title:  ${paper.title}");
