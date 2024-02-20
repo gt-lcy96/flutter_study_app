@@ -30,6 +30,7 @@ class ResultPage extends GetView<QuestionController> {
         title: controller.correctAnsweredQuestions,
       ),
       body: BackgroundDecoration(
+        showGradient: true,
         child: Column(
           children: [
             Expanded(

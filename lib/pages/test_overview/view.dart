@@ -24,6 +24,7 @@ class TestOverviewPage extends GetView<QuestionController> {
           title: controller.completeTest,
         ),
         body: BackgroundDecoration(
+          showGradient: true,
           child: Column(children: [
             Expanded(
               child: ContentArea(

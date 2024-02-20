@@ -42,6 +42,7 @@ class QuestionPage extends GetView<QuestionController> {
                 style: appBarTS),
           )),
       body: BackgroundDecoration(
+        showGradient: true,
         child: Obx(() => Container(
               // height: Get.height,
               width: double.maxFinite,

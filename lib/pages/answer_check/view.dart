@@ -29,6 +29,7 @@ class AnswerCheckPage extends GetView<QuestionController> {
         },
       ),
       body: BackgroundDecoration(
+        showGradient: true,
         child: Obx(() => Column(
               children: [
                 Expanded(
