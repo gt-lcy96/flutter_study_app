@@ -6,15 +6,15 @@ mixin SubThemeData {
   TextTheme getTextTheme() {
     return GoogleFonts.quicksandTextTheme(const TextTheme(
       bodyText1: TextStyle(
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
       ),
       bodyText2: TextStyle(
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
       ),
     ));
   }
 
   IconThemeData getIconTheme() {
-    return const IconThemeData(color: onSurfaceTextColor, size: 16);
+    return const IconThemeData(color: onSurfaceTextColor, size: 18);
   }
 }

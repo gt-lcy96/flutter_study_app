@@ -11,13 +11,13 @@ const Color wrongAnswerColor = Color(0xFFf85187);
 const Color notAnsweredColor = Color(0xFF2a3c65);
 
 const mainGradientLight = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
     colors: [primaryLightColorLight, primaryColorLight]);
 
 const mainGradientDark = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
     colors: [primaryDarkColorDark, primaryColorDark]);
 
 LinearGradient mainGradient() =>
