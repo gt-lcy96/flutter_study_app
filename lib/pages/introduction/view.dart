@@ -35,7 +35,7 @@ class IntroductionPage extends StatelessWidget {
                   print("tap AppCircleButton");
                   Get.toNamed(AppRoutes.HOME);
                 },
-                child: const Icon(Icons.arrow_forward, size: 35)),
+                child: const Icon(Icons.arrow_forward_outlined, size: 35)),
           ]),
         ),
       ),

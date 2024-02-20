@@ -52,14 +52,14 @@ class HomePage extends GetView<MyZoomDrawerController> {
                             child: Row(
                               children: [
                                 Icon(AppIcons.peace),
-                                Text("Hello friend",
+                                Text("Hello",
                                     style: detailText.copyWith(
                                       color: onSurfaceTextColor,
                                     ))
                               ],
                             ),
                           ),
-                          Text("What do you want to learn today?",
+                          Text("Test yourself today for skill improvement",
                               style: headerText),
                         ],
                       ),
