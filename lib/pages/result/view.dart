@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:study_app/configs/themes/app_light_theme.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/questions_controller_extension.dart';
@@ -35,15 +36,16 @@ class ResultPage extends GetView<QuestionController> {
                 child: ContentArea(
               child: Column(
                 children: [
-                  SvgPicture.asset('assets/images/bulb.svg'),
+                  Image.asset('assets/images/bulb_logo-removebg-preview.png', width: 100, height: 100,),
+
                   Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 5.h),
+                    padding: EdgeInsets.only(top: 25.h, bottom: 5.h),
                     child: Text('Congratulations',
-                        style: headerText.copyWith(color: _textColor)),
+                        style: headerText.copyWith(color: primaryLightColorLight)),
                   ),
                   Text(
                     'You have ${controller.points} points',
-                    style: TextStyle(color: _textColor),
+                    style: TextStyle(color: primaryLightColorLight),
                   ),
                   SizedBox(
                     height: 25.h,
