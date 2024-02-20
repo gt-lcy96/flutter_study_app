@@ -14,6 +14,7 @@ import 'package:study_app/pages/result/view.dart';
 import 'package:study_app/pages/splash_screen/index.dart';
 import 'package:study_app/pages/question/index.dart';
 import 'package:study_app/pages/test_overview/view.dart';
+import 'package:study_app/routes/custom_transition.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -26,10 +27,14 @@ class AppPages {
       name: AppRoutes.INITIAL,
       page: () => const SplashScreenPage(),
       binding: SplashScreenBindings(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.INTRODUCTION,
       page: () => const IntroductionPage(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       // name: AppRoutes.HOME,
@@ -38,28 +43,40 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(QuestionPaperController());
         Get.put(MyZoomDrawerController());
-      })
+      }),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => const LoginPage(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.QUESTION,
       page: () => const QuestionPage(),
       binding: QuestionBinding(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.TEST_OVERVIEW,
       page: () => const TestOverviewPage(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.RESULT,
       page: () => const ResultPage(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.ANSWER_CHECK,
       page: () => const AnswerCheckPage(),
+      customTransition: CustomScaleTransition(),
+      transitionDuration: Duration(milliseconds: 500),
     ),
   ];
 }
