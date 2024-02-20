@@ -46,7 +46,7 @@ class QuestionCard extends GetView<QuestionPaperController> {
                       child: FadeInImage(
                         image: NetworkImage(model.image_url!),
                         placeholder:
-                            AssetImage("assets/images/app_splash_logo.png"),
+                            AssetImage("assets/images/book_logo_prev_ui.png"),
                       ),
                     ),
                   ),

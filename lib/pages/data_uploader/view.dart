@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/pages/data_uploader/controller.dart';
+import 'package:get/get.dart';
 
 class DataUploaderScreen extends GetView<DataUploaderController> {
   const DataUploaderScreen({super.key});

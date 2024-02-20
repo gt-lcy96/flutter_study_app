@@ -23,6 +23,14 @@ class AppPages {
   static List<String> history = [];
 
   static final List<GetPage> routes = [
+    // GetPage(
+    //   name: AppRoutes.INITIAL,
+    //   page: () => const DataUploaderScreen(),
+    //   binding: DataUploaderBinding(),
+    //   customTransition: CustomScaleTransition(),
+    //   transitionDuration: Duration(milliseconds: 500),
+    // ),
+
     GetPage(
       name: AppRoutes.INITIAL,
       page: () => const SplashScreenPage(),
