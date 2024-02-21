@@ -22,22 +22,22 @@ const mainGradientDark = LinearGradient(
     colors: [primaryDarkColorDark, primaryColorDark]);
 
 
-LinearGradient mainGradient() => Get.find<ThemeController>().isDarkMode
+LinearGradient mainGradient() => Get.find<ThemeController>().isLightMode
     ? mainGradientLight
     : mainGradientDark;
 
 Color customScaffoldColor(BuildContext context) =>
-    Get.find<ThemeController>().isDarkMode
+    Get.find<ThemeController>().isLightMode
         ? const Color.fromARGB(255, 240, 237, 255)
         : const Color(0xFF2e3c62);
 
 // ? const Color.fromARGB(255, 20, 46, 158)
 // : const Color.fromARGB(255, 221, 221, 221);
 
-Color answerSelectedColor() => Get.find<ThemeController>().isDarkMode
+Color answerSelectedColor() => Get.find<ThemeController>().isLightMode
     ? Theme.of(Get.context!).primaryColor
     : Theme.of(Get.context!).cardColor.withOpacity(0.5);
 
-Color answerBorderColor() => Get.find<ThemeController>().isDarkMode
+Color answerBorderColor() => Get.find<ThemeController>().isLightMode
     ? const Color.fromARGB(255, 221, 221, 221)
     : const Color.fromARGB(255, 20, 46, 158);

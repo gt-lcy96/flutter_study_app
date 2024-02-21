@@ -64,9 +64,9 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
                       const Spacer(flex: 4),
                       _DrawerButton(
                           size: 30,
-                          icon: themeController.isDarkMode
-                              ? Icons.toggle_on
-                              : Icons.toggle_off,
+                          icon: themeController.isLightMode
+                              ? Icons.toggle_off
+                              : Icons.toggle_on,
                           label: "Dark Mode ",
                           onPressed: () {
                             themeController.toggleDarkmode();

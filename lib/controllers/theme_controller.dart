@@ -4,8 +4,8 @@ import 'package:study_app/configs/themes/app_dark_theme.dart';
 import 'package:study_app/configs/themes/app_light_theme.dart';
 
 class ThemeController extends GetxController {
-  bool _isDarkMode = true;
-  bool get isDarkMode => _isDarkMode;
+  bool _isLightMode = true;
+  bool get isLightMode => _isLightMode;
   late ThemeData _darkTheme;
   late ThemeData _lightTheme;
 
@@ -24,8 +24,8 @@ class ThemeController extends GetxController {
   }
 
   toggleDarkmode() {
-    _isDarkMode = !_isDarkMode; // Toggle the theme mode
-    Get.changeTheme(_isDarkMode ? _lightTheme : _darkTheme);
+    _isLightMode = !_isLightMode; // Toggle the theme mode
+    Get.changeTheme(_isLightMode ? _lightTheme : _darkTheme);
     update();
   }
 }

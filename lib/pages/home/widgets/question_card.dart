@@ -16,14 +16,11 @@ class QuestionCard extends GetView<QuestionPaperController> {
 
   @override
   Widget build(BuildContext context) {
-    // var iconColor = Get.find<ThemeController>().isDarkMode
-    //     ? Colors.white
-    //     : Theme.of(context).primaryColor;
-    var iconColor = Get.find<ThemeController>().isDarkMode
+    var iconColor = Get.find<ThemeController>().isLightMode
         ? Theme.of(context).primaryColor
         : Colors.white;
 
-    var descriptionTextColor = Get.find<ThemeController>().isDarkMode
+    var descriptionTextColor = Get.find<ThemeController>().isLightMode
         ? Colors.black
         : Colors.white;
 
