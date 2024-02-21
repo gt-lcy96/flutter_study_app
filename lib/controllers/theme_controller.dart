@@ -4,8 +4,13 @@ import 'package:study_app/configs/themes/app_dark_theme.dart';
 import 'package:study_app/configs/themes/app_light_theme.dart';
 
 class ThemeController extends GetxController {
+  bool _isLightMode = true;
+  bool get isLightMode => _isLightMode;
   late ThemeData _darkTheme;
   late ThemeData _lightTheme;
+
+  ThemeData get darkTheme => _darkTheme;
+  ThemeData get lightTheme => _lightTheme;
 
   @override
   void onInit() {
@@ -18,6 +23,9 @@ class ThemeController extends GetxController {
     _lightTheme = LightTheme().buildLightTheme();
   }
 
-  ThemeData get darkTheme => _darkTheme;
-  ThemeData get lightTheme => _lightTheme;
+  toggleDarkmode() {
+    _isLightMode = !_isLightMode; // Toggle the theme mode
+    Get.changeTheme(_isLightMode ? _lightTheme : _darkTheme);
+    update();
+  }
 }

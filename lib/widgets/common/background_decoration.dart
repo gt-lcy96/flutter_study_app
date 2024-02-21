@@ -21,9 +21,9 @@ class BackgroundDecoration extends StatelessWidget {
             color: showGradient ? null : Theme.of(context).primaryColor,
             gradient: showGradient ? mainGradient() : null,
           ),
-          child: CustomPaint(
-            painter: BackgroundPainter(),
-          ),
+          // child: CustomPaint(
+          //   painter: BackgroundPainter(),
+          // ),
         )),
         Positioned.fill(child: SafeArea(child: child)),
       ],

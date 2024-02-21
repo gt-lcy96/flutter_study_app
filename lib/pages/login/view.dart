@@ -21,14 +21,14 @@ class LoginPage extends GetView<AuthController> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/images/app_splash_logo.png",
-            width: 200,
-            height: 200,
+            "assets/images/book_logo_prev_ui.png",
+            width: 250,
+            height: 250,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 60.h),
+            padding: EdgeInsets.symmetric(vertical: 65.h),
             child: const Text(
-              "This is a study app. You can use as you want. You have the full access to all the materials in this course",
+              "This is a study app, There will be a few question for you to answer in the quiz. If you are developer, you can try to understand the code and scale it",
               style: TextStyle(
                 color: onSurfaceTextColor,
                 fontWeight: FontWeight.bold,

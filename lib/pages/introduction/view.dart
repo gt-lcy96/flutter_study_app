@@ -18,12 +18,12 @@ class IntroductionPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: Get.width * 0.2),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-              Icons.star,
+              Icons.book,
               size: 65.sp,
             ),
             SizedBox(height: 40.h),
             const Text(
-              'This is a study app, You can use it as you want. If you understand how it works, you would be able to scale it.',
+              'This is a study app, There will be a few question for you to answer in the quiz. If you are developer, you can try to understand the code and scale it',
               style: TextStyle(
                 fontSize: 18,
                 color: onSurfaceTextColor,
@@ -35,7 +35,7 @@ class IntroductionPage extends StatelessWidget {
                   print("tap AppCircleButton");
                   Get.toNamed(AppRoutes.HOME);
                 },
-                child: const Icon(Icons.arrow_forward, size: 35)),
+                child: const Icon(Icons.arrow_forward_outlined, size: 35)),
           ]),
         ),
       ),

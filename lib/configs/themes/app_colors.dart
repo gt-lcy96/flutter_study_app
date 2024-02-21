@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 
 import 'app_light_theme.dart';
 import 'app_dark_theme.dart';
@@ -11,28 +12,32 @@ const Color wrongAnswerColor = Color(0xFFf85187);
 const Color notAnsweredColor = Color(0xFF2a3c65);
 
 const mainGradientLight = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
     colors: [primaryLightColorLight, primaryColorLight]);
 
 const mainGradientDark = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
     colors: [primaryDarkColorDark, primaryColorDark]);
 
-LinearGradient mainGradient() =>
-    UIParameters.isDarkMode() ? mainGradientDark : mainGradientLight;
 
-Color customScaffoldColor(BuildContext context) => UIParameters.isDarkMode()
-    ? const Color(0xFF2e3c62)
-    : const Color.fromARGB(255, 240, 237, 255);
+LinearGradient mainGradient() => Get.find<ThemeController>().isLightMode
+    ? mainGradientLight
+    : mainGradientDark;
+
+Color customScaffoldColor(BuildContext context) =>
+    Get.find<ThemeController>().isLightMode
+        ? const Color.fromARGB(255, 240, 237, 255)
+        : const Color(0xFF2e3c62);
+
 // ? const Color.fromARGB(255, 20, 46, 158)
 // : const Color.fromARGB(255, 221, 221, 221);
 
-Color answerSelectedColor() => UIParameters.isDarkMode()
-    ? Theme.of(Get.context!).cardColor.withOpacity(0.5)
-    : Theme.of(Get.context!).primaryColor;
+Color answerSelectedColor() => Get.find<ThemeController>().isLightMode
+    ? Theme.of(Get.context!).primaryColor
+    : Theme.of(Get.context!).cardColor.withOpacity(0.5);
 
-Color answerBorderColor() => UIParameters.isDarkMode()
-    ? const Color.fromARGB(255, 20, 46, 158)
-    : const Color.fromARGB(255, 221, 221, 221);
+Color answerBorderColor() => Get.find<ThemeController>().isLightMode
+    ? const Color.fromARGB(255, 221, 221, 221)
+    : const Color.fromARGB(255, 20, 46, 158);

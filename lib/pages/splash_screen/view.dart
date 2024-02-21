@@ -14,9 +14,9 @@ class SplashScreenPage extends GetView<SplashScreenController> {
       alignment: Alignment.center,
       decoration: BoxDecoration(gradient: mainGradient()),
       child: Image.asset(
-        "assets/images/app_splash_logo.png",
-        width: 200.w,
-        height: 200.h,
+        "assets/images/book_logo_prev_ui.png",
+        width: 250.w,
+        height: 250.h,
       ),
     ));
   }

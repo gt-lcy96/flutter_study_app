@@ -26,7 +26,7 @@ class DataUploaderController extends GetxController {
     final Map<String, dynamic> manifestMap = json.decode(manifestContent);
     final papersInAssets = manifestMap.keys
         .where((path) =>
-            path.startsWith("assets/DB/paper") && path.contains('.json'))
+            path.startsWith("assets/DB/gpt_papers") && path.contains('.json'))
         .toList();
     List<QuestionPaperModel> questionPapers = [];
     for (var paper in papersInAssets) {
