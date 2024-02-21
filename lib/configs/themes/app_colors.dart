@@ -21,21 +21,23 @@ const mainGradientDark = LinearGradient(
     end: Alignment.bottomLeft,
     colors: [primaryDarkColorDark, primaryColorDark]);
 
-// LinearGradient mainGradient() =>
-//     UIParameters.isDarkMode() ? mainGradientDark : mainGradientLight;
-LinearGradient mainGradient() =>
-    Get.find<ThemeController>().isDarkMode ? mainGradientDark : mainGradientLight;
 
-Color customScaffoldColor(BuildContext context) => UIParameters.isDarkMode()
-    ? const Color(0xFF2e3c62)
-    : const Color.fromARGB(255, 240, 237, 255);
+LinearGradient mainGradient() => Get.find<ThemeController>().isDarkMode
+    ? mainGradientLight
+    : mainGradientDark;
+
+Color customScaffoldColor(BuildContext context) =>
+    Get.find<ThemeController>().isDarkMode
+        ? const Color.fromARGB(255, 240, 237, 255)
+        : const Color(0xFF2e3c62);
+
 // ? const Color.fromARGB(255, 20, 46, 158)
 // : const Color.fromARGB(255, 221, 221, 221);
 
-Color answerSelectedColor() => UIParameters.isDarkMode()
+Color answerSelectedColor() => Get.find<ThemeController>().isDarkMode
     ? Theme.of(Get.context!).cardColor.withOpacity(0.5)
     : Theme.of(Get.context!).primaryColor;
 
-Color answerBorderColor() => UIParameters.isDarkMode()
+Color answerBorderColor() => Get.find<ThemeController>().isDarkMode
     ? const Color.fromARGB(255, 20, 46, 158)
     : const Color.fromARGB(255, 221, 221, 221);
