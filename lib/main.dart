@@ -27,6 +27,8 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         child: GetMaterialApp(
       theme: Get.find<ThemeController>().lightTheme,
+      darkTheme: Get.find<ThemeController>().darkTheme,
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

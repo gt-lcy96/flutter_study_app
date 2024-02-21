@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 
 import 'app_light_theme.dart';
 import 'app_dark_theme.dart';
@@ -20,8 +21,10 @@ const mainGradientDark = LinearGradient(
     end: Alignment.bottomLeft,
     colors: [primaryDarkColorDark, primaryColorDark]);
 
+// LinearGradient mainGradient() =>
+//     UIParameters.isDarkMode() ? mainGradientDark : mainGradientLight;
 LinearGradient mainGradient() =>
-    UIParameters.isDarkMode() ? mainGradientDark : mainGradientLight;
+    Get.find<ThemeController>().isDarkMode ? mainGradientDark : mainGradientLight;
 
 Color customScaffoldColor(BuildContext context) => UIParameters.isDarkMode()
     ? const Color(0xFF2e3c62)

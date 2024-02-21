@@ -7,6 +7,7 @@ import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/custom_textStyle.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/question_paper_controller.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 import 'package:study_app/controllers/zoom_drawer_controller.dart';
 import 'package:study_app/pages/home/widgets/menu_screen.dart';
 import 'package:study_app/pages/home/widgets/question_card.dart';
@@ -30,69 +31,76 @@ class HomePage extends GetView<MyZoomDrawerController> {
             backgroundColor: Colors.white.withOpacity(0.5),
             slideWidth: Get.width * 0.6,
             menuScreen: MenuScreen(),
-            mainScreen: Container(
-              decoration: BoxDecoration(gradient: mainGradient()),
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(mobileScreenPadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppCircleButton(
-                              onTap: controller.toggleDrawer,
-                              child: Icon(Icons.menu, size: 20.sp,)),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: Row(
-                              children: [
-                                Icon(AppIcons.peace),
-                                Text("Hello",
-                                    style: detailText.copyWith(
-                                      color: onSurfaceTextColor,
-                                    ))
-                              ],
+            mainScreen: GetBuilder<ThemeController>(builder: (themeController) {
+              return Container(
+                decoration: BoxDecoration(gradient: mainGradient()),
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(mobileScreenPadding),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppCircleButton(
+                                onTap: controller.toggleDrawer,
+                                child: Icon(
+                                  Icons.menu,
+                                  size: 20.sp,
+                                )),
+                            SizedBox(
+                              height: 10,
                             ),
-                          ),
-                          Text("Test yourself today for skill improvement",
-                              style: headerText),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ContentArea(
-                          addPadding: false,
-                          child: Obx(
-                            () => ListView.separated(
-                              padding: UIParameters.mobileScreenPadding,
-                              itemBuilder: (BuildContext context, int index) {
-                                // print("_questionPaperController.allPapers[index].image_url!:  ${_questionPaperController.allPapers[index].image_url!}");
-                                return QuestionCard(
-                                    model: _questionPaperController
-                                        .allPapers[index]);
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) => SizedBox(
-                                height: 20.h,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: Row(
+                                children: [
+                                  Icon(AppIcons.peace),
+                                  Text("Hello",
+                                      style: detailText.copyWith(
+                                        color: onSurfaceTextColor,
+                                      ))
+                                ],
                               ),
-                              itemCount:
-                                  _questionPaperController.allPapers.length,
+                            ),
+                            Text("Test yourself today for skill improvement",
+                                style: headerText),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: ContentArea(
+                            addPadding: false,
+                            child: Obx(
+                              () => ListView.separated(
+                                padding: UIParameters.mobileScreenPadding,
+                                itemBuilder: (BuildContext context, int index) {
+                                  // print("_questionPaperController.allPapers[index].image_url!:  ${_questionPaperController.allPapers[index].image_url!}");
+                                  return QuestionCard(
+                                      model: _questionPaperController
+                                          .allPapers[index]);
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) =>
+                                        SizedBox(
+                                  height: 20.h,
+                                ),
+                                itemCount:
+                                    _questionPaperController.allPapers.length,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
           );
         },
       ),
