@@ -35,9 +35,9 @@ Color customScaffoldColor(BuildContext context) =>
 // : const Color.fromARGB(255, 221, 221, 221);
 
 Color answerSelectedColor() => Get.find<ThemeController>().isDarkMode
-    ? Theme.of(Get.context!).cardColor.withOpacity(0.5)
-    : Theme.of(Get.context!).primaryColor;
+    ? Theme.of(Get.context!).primaryColor
+    : Theme.of(Get.context!).cardColor.withOpacity(0.5);
 
 Color answerBorderColor() => Get.find<ThemeController>().isDarkMode
-    ? const Color.fromARGB(255, 20, 46, 158)
-    : const Color.fromARGB(255, 221, 221, 221);
+    ? const Color.fromARGB(255, 221, 221, 221)
+    : const Color.fromARGB(255, 20, 46, 158);

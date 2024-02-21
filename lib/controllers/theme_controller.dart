@@ -4,7 +4,7 @@ import 'package:study_app/configs/themes/app_dark_theme.dart';
 import 'package:study_app/configs/themes/app_light_theme.dart';
 
 class ThemeController extends GetxController {
-  bool _isDarkMode = false;
+  bool _isDarkMode = true;
   bool get isDarkMode => _isDarkMode;
   late ThemeData _darkTheme;
   late ThemeData _lightTheme;
