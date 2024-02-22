@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 
 enum AnswerStatus { correct, wrong, answered, notAnswered }
 
@@ -98,17 +100,21 @@ class NotAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
-      decoration: BoxDecoration(
-        borderRadius: UIParameters.cardBorderRadius,
-        color: notAnsweredColor.withOpacity(0.1),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      child: Text(answer,
-          style: const TextStyle(
-            color: notAnsweredColor,
-            fontWeight: FontWeight.bold,
-          )),
-    );
+    return GetBuilder<ThemeController>(builder: (themeController) {
+      return Ink(
+        decoration: BoxDecoration(
+          borderRadius: UIParameters.cardBorderRadius,
+          color: themeController.isLightMode ? Colors.white : Theme.of(context).cardColor,
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        child: Text(answer,
+            style: TextStyle(
+              color: themeController.isLightMode
+                  ? Colors.black
+                  : Colors.white,
+              fontWeight: FontWeight.bold,
+            )),
+      );
+    });
   }
 }

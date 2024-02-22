@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
 import 'package:study_app/controllers/auth_controller.dart';
+import 'package:study_app/controllers/theme_controller.dart';
 import 'package:study_app/widgets/common/main_button.dart';
 
 class LoginPage extends GetView<AuthController> {
@@ -51,7 +52,7 @@ class LoginPage extends GetView<AuthController> {
                 child: Text(
                   "Sign in with Google",
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Get.isDarkMode ? Colors.white : Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
